@@ -70,7 +70,6 @@ public class StorySlice1Test {
     static final class FakeWriter implements Engines.Writer {
         final AtomicInteger calls = new AtomicInteger();
         final List<String> users = new java.util.concurrent.CopyOnWriteArrayList<>();
-        int pageNo = 1;
         boolean neverEnds = false;
         @Override public String model() { return "claude-sonnet-5-5"; }
         @Override public synchronized Engines.Reply write(String system, String user, int maxTokens) throws Exception {
@@ -78,7 +77,11 @@ public class StorySlice1Test {
             users.add(user);
             if (user.startsWith("Start a story")) return new Engines.Reply(start(), 1200, 300, 0, 0);
             if (user.startsWith("Tell the story")) return new Engines.Reply("Sparky was scared. Mo helped. They found the light.", 500, 60, 0, 0);
-            pageNo++;
+            // The page being written follows the last "Page N:" in the prompt, so branches written ahead
+            // in either order get the same answer.
+            java.util.regex.Matcher m = java.util.regex.Pattern.compile("(?m)^Page (\\d+): ").matcher(user);
+            int pageNo = 1;
+            while (m.find()) pageNo = Integer.parseInt(m.group(1)) + 1;
             boolean ending = !neverEnds && user.contains("This is the last page");
             int choices = ending ? 0 : (pageNo % 2 == 0 ? 0 : 2);
             String text = (user.contains("The child chose") ? "They went " + (user.contains("cave") ? "to the cave." : "to the river.") : "The night was soft and quiet.") + " Sparky took a deep breath.";
