@@ -22,7 +22,7 @@ It works on its own, or as an extension of [Agent Friday desktop](https://github
 
 Optional add-ons, in their own repositories:
 - **[Friday News](https://github.com/FutureSpeakAI/friday-tv-news):** headlines from public outlets, read aloud, with a kids filter and your local weather.
-- **[Wonder Owl](https://github.com/FutureSpeakAI/wonder-owl):** a kid-safe explorer with a story mode. Coming soon.
+- **Wonder Owl:** a kid-safe explorer with a story mode. Coming soon.
 
 ## What you need
 
