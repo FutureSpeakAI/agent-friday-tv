@@ -69,7 +69,7 @@ public class StorySlice1Test {
     /** A writer that answers the start, then pages with two choices every other page, then an ending; counts its calls. */
     static final class FakeWriter implements Engines.Writer {
         final AtomicInteger calls = new AtomicInteger();
-        final List<String> users = new ArrayList<>();
+        final List<String> users = new java.util.concurrent.CopyOnWriteArrayList<>();
         int pageNo = 1;
         boolean neverEnds = false;
         @Override public String model() { return "claude-sonnet-5-5"; }
@@ -89,7 +89,7 @@ public class StorySlice1Test {
     }
 
     static final class FakeSpeaker implements Seams.Speaker {
-        final boolean paid; final AtomicInteger calls = new AtomicInteger(); final List<String> voices = new ArrayList<>();
+        final boolean paid; final AtomicInteger calls = new AtomicInteger(); final List<String> voices = new java.util.concurrent.CopyOnWriteArrayList<>();
         FakeSpeaker(boolean paid) { this.paid = paid; }
         @Override public Seams.Audio speak(String text, Cast.Member who) {
             calls.incrementAndGet();
@@ -102,7 +102,7 @@ public class StorySlice1Test {
     }
 
     static final class FakePictures implements Images {
-        final AtomicInteger calls = new AtomicInteger(); final List<String> briefs = new ArrayList<>(); volatile boolean ready = true;
+        final AtomicInteger calls = new AtomicInteger(); final List<String> briefs = new java.util.concurrent.CopyOnWriteArrayList<>(); volatile boolean ready = true;
         @Override public boolean ready() { return ready; }
         @Override public Result create(String prompt, Progress progress) {
             calls.incrementAndGet(); briefs.add(prompt);
