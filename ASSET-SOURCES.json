@@ -1,0 +1,166 @@
+{
+ "about": "Every picture, sound, font, library and other binary in this repository, with where it came from. scripts/publish_guard.py checks this list on every push.",
+ "assets": [
+  {
+   "path": "android/addon-sdk/src/main/res/font/inter.ttf",
+   "sha256": "ddf3bac28b1adb68c6702753b891b29ae570dabe40563a36bd633cf49d9f4200",
+   "origin": "Inter font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/addon-sdk/src/main/res/font/jetbrains_mono.ttf",
+   "sha256": "ce4e68ed840528b5a0e51b41926c653110738a745fbe3eb9049f8fc555fb9513",
+   "origin": "JetBrains Mono font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/addon-sdk/src/main/res/font/orbitron.ttf",
+   "sha256": "c23064b416b7106be791003249e4c1ef3c351df030039fa120a01580880e164e",
+   "origin": "Orbitron font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/gradle/wrapper/gradle-wrapper.jar",
+   "sha256": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046",
+   "origin": "Gradle wrapper, from the Gradle 8.11.1 distribution",
+   "license": "Apache-2.0",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/helper/src/main/res/font/inter.ttf",
+   "sha256": "ddf3bac28b1adb68c6702753b891b29ae570dabe40563a36bd633cf49d9f4200",
+   "origin": "Inter font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/helper/src/main/res/font/orbitron.ttf",
+   "sha256": "c23064b416b7106be791003249e4c1ef3c351df030039fa120a01580880e164e",
+   "origin": "Orbitron font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/assets/avatar/desktop/Inter-latin.woff2",
+   "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+   "origin": "Inter font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/assets/avatar/desktop/Orbitron-latin.woff2",
+   "sha256": "c25a9f9da5d9f3db1bf2a01474722dc9b377675b7bbab6d0dfda6902794fd1ed",
+   "origin": "Orbitron font, from its official release",
+   "license": "SIL Open Font License 1.1",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/assets/home/wall-constellation.jpg",
+   "sha256": "8a99085b13773175f8eb2bbc72d2c582f6fc64521db0dddd624a1f8f0196075f",
+   "origin": "FutureSpeak brand wallpaper, rendered from Agent Friday's brand tokens and the FutureSpeak mark",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/assets/home/wall-horizon.jpg",
+   "sha256": "54d2aec7cd39ae291bcea7503b795233da949852b999d34f7f239821a8986ce0",
+   "origin": "FutureSpeak brand wallpaper, rendered from Agent Friday's brand tokens and the FutureSpeak mark",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/assets/home/wall-mark.jpg",
+   "sha256": "e8882137fea532d71955be835e6585ddc8a91fe4c8fc40148b544410888d5a11",
+   "origin": "FutureSpeak brand wallpaper, rendered from Agent Friday's brand tokens and the FutureSpeak mark",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/jniLibs/armeabi-v7a/libsherpa-onnx-jni.so",
+   "sha256": "fd2ab3cac78d88c89e8240900ac00c0548a538d225b44de4d083c13c8b1c792d",
+   "origin": "sherpa-onnx v2.0.1 Android JNI library (k2-fsa project release)",
+   "license": "Apache-2.0",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/jniLibs/x86_64/libsherpa-onnx-jni.so",
+   "sha256": "9cd971c6a7fc3ec3ea5c22c516ca346c7e395d665cde794e2319e596ec25719b",
+   "origin": "sherpa-onnx v2.0.1 Android JNI library (k2-fsa project release)",
+   "license": "Apache-2.0",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/drawable-nodpi/mark.png",
+   "sha256": "5a1d5eca1ed6389257c663a6ed2006a6a305951c1df07efe7b7360ca090890a6",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/drawable-xhdpi/banner.png",
+   "sha256": "702c116fe7c7da88cda9a206bbec704b92d2b8b74320f019e24650141cb62ead",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/mipmap-hdpi/ic_launcher.png",
+   "sha256": "f519958ffd607fa3e2bdfda11cd1e5e0433204328e299bbfc4c2cb1ab3128f17",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/mipmap-mdpi/ic_launcher.png",
+   "sha256": "377b0f38b314c9f2c6fdbf1f8cee4b0d07ea69fcc3e168180b4583d91a9d0f7f",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/mipmap-xhdpi/ic_launcher.png",
+   "sha256": "4cbe51f71d893ca69b39d211fbe9b5c2a0f2c9bdbd353b3717992e44ee3d9a2f",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+   "sha256": "381d97f70afa370c4c1880957d7166f4fb5dbdfc7b653f56c76ba398e33ebc7b",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+   "sha256": "42518797ce92b7dd967ef3a5472feff8a3caaa4e3f9134ef68baf5c9f318b55c",
+   "origin": "Agent Friday / FutureSpeak brand icon",
+   "license": "MIT (the FutureSpeak mark is a trademark)",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/test/resources/pair/desktop.p12",
+   "sha256": "9432dc91c7164499679720b4e55fc8bede90cee71211569e136c17502f30b933",
+   "origin": "self-signed test certificate, generated for the pairing tests (no real identity)",
+   "license": "MIT",
+   "generated_for_household": false
+  },
+  {
+   "path": "android/tv/src/test/resources/pair/impostor.p12",
+   "sha256": "36cdc77e376e0d0d2b6732693e9741c4f913baed3e56241231e4dc289a8b85e3",
+   "origin": "self-signed test certificate, generated for the pairing tests (no real identity)",
+   "license": "MIT",
+   "generated_for_household": false
+  },
+  {
+   "path": "docs/images/friday-home.png",
+   "sha256": "1a3775daca350542bdd6a944366b4a573242139e0e500c15046d4af91a86a15e",
+   "origin": "screenshot from the Android emulator; no account or household data",
+   "license": "MIT",
+   "generated_for_household": false
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+  "desktop_repo": "github.com/FutureSpeakAI/Agent-Friday",
+  "desktop_commit": "2ac5da69843ac1c3bbafec8ae34f3a660fa93faa",
+  "synced_at": "2026-11-02T01:32:37.387Z",
+  "scene_source": "ui_parts/styles_and_scene.html",
+  "files": {
+    "three-r128.min.js": {
+      "sha256": "9274bbcec8d96168626c732b5d31c775aa8cfb7eaa0599bec0c175908a2c1ce2",
+      "bytes": 603445
+    },
+    "three-r128-EffectComposer.js": {
+      "sha256": "4fc320fa3185847797332bc2b0125b1a39b9cf5fc4170a2f180cfa54fb057a2b",
+      "bytes": 6271
+    },
+    "three-r128-RenderPass.js": {
+      "sha256": "57a549b2d6a947cddf0385a804dc70c3b2d155663d908e99e35d42274b3878be",
+      "bytes": 1746
+    },
+    "three-r128-ShaderPass.js": {
+      "sha256": "2e64890b8e4c4dafcfd796d5c84877f2ad36a101c83263211c500ec40eaf1240",
+      "bytes": 1416
+    },
+    "three-r128-CopyShader.js": {
+      "sha256": "6b5da4fe3b410286974590885f82fe4a446f25c728f7d6c888e2a2a331333949",
+      "bytes": 606
+    },
+    "three-r128-LuminosityHighPassShader.js": {
+      "sha256": "00ed0682e61ca207d9c62298269472d6d4eedd9d33528400e7cbc633da8544da",
+      "bytes": 1228
+    },
+    "three-r128-UnrealBloomPass.js": {
+      "sha256": "1ed342b273e9b077a3e92e5caeecd45043f03071306c696564d5b53f0562dced",
+      "bytes": 12612
+    },
+    "Orbitron-latin.woff2": {
+      "sha256": "c25a9f9da5d9f3db1bf2a01474722dc9b377675b7bbab6d0dfda6902794fd1ed",
+      "bytes": 11800
+    },
+    "OFL-Orbitron.txt": {
+      "sha256": "ab609b0e110d622435ff337cdf233288556e011bbf9bd0550be98846c0630819",
+      "bytes": 4426
+    },
+    "Inter-latin.woff2": {
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+      "bytes": 48256
+    },
+    "OFL-Inter.txt": {
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "bytes": 4377
+    },
+    "scene.js": {
+      "sha256": "50e4815b5e91539a550a5fb2e70611413948cc3a31c910f55309b90d4844a0e0",
+      "bytes": 414088
+    },
+    "vibe_api.js": {
+      "sha256": "b6019790b737797a45c89d8523c9c27dbafc1cfc88134c6f7139dfc88ad7a306",
+      "bytes": 10425
+    }
+  }
+}

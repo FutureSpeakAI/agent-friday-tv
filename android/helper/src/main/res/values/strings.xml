@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ad Break Guard</string>
+    <string name="service_label">Ad Break Guard</string>
+    <string name="service_description">Watches Hulu, Tubi, Pluto TV and The Roku Channel for on-screen ad labels. During an ad it mutes the sound and shows a calm placard, then restores everything when the ad ends. It reads only on-screen text, keeps nothing, and has no internet access.</string>
+</resources>

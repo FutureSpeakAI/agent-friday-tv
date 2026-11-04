@@ -1,0 +1,26 @@
+// Release signing, shared by both apps.
+//
+// Never commit a keystore. Supply one of:
+//   - environment: FRIDAYTV_KEYSTORE (path), FRIDAYTV_KEYSTORE_PASSWORD, FRIDAYTV_KEY_ALIAS, FRIDAYTV_KEY_PASSWORD
+//   - android/keystore.properties (git-ignored) with storeFile, storePassword, keyAlias, keyPassword
+// Without either, release builds are signed with this computer's Android debug key. That is fine
+// for installing on your own TV; it means an update built on another computer can't replace it.
+def props = new Properties()
+def f = rootProject.file('keystore.properties')
+if (f.exists()) f.withInputStream { props.load(it) }
+def pick = { String env, String key -> System.getenv(env) ?: props.getProperty(key) }
+
+ext.fridayReleaseSigning = { android ->
+    def store = pick('FRIDAYTV_KEYSTORE', 'storeFile')
+    if (store) {
+        android.signingConfigs.create('release') {
+            storeFile rootProject.file(store)
+            storePassword pick('FRIDAYTV_KEYSTORE_PASSWORD', 'storePassword')
+            keyAlias pick('FRIDAYTV_KEY_ALIAS', 'keyAlias')
+            keyPassword pick('FRIDAYTV_KEY_PASSWORD', 'keyPassword')
+        }
+        return android.signingConfigs.release
+    }
+    logger.lifecycle('No release keystore configured: signing release APKs with the local debug key.')
+    return android.signingConfigs.debug
+}

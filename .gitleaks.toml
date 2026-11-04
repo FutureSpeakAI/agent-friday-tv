@@ -1,0 +1,14 @@
+title = "agent-friday-tv"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Test-only fixtures and public identifiers"
+paths = [
+  '''android/tv/src/test/resources/pair/.*\.p12''',   # self-signed test certificates for the pairing tests (CN=... test desktop / test impostor)
+  '''android/gradle/wrapper/gradle-wrapper\.jar''',
+]
+regexes = [
+  '''sk-ant-TEST-not-a-real-key-0000''',               # the wizard test's fake key
+]

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Add-ons ask the core app for its state, voice and approvals through this provider. -->
+    <queries>
+        <package android:name="ai.futurespeak.friday.tv" />
+    </queries>
+</manifest>

@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+apply from: rootProject.file('signing.gradle')
+
+android {
+    namespace 'ai.futurespeak.friday.tv'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'ai.futurespeak.friday.tv'
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName '0.1.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig fridayReleaseSigning(android)   // see ../signing.gradle; never commit a keystore
+        }
+    }
+    testOptions { unitTests.returnDefaultValues = false }
+    lint { abortOnError false; checkReleaseBuilds false }
+}
+
+// No third-party runtime libraries on purpose: no analytics, no SDKs, nothing that could phone home.
+// JUnit and org.json (Android ships org.json; the JVM test runtime does not) are test-only.
+dependencies {
+    implementation project(':addon-sdk')   // our own code: the shared Look, input layer and add-on contract
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}

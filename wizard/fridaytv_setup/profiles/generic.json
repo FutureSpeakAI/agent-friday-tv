@@ -1,0 +1,49 @@
+{
+ "name": "Generic Android TV / Google TV",
+ "manufacturers": [],
+ "description": "Google components found on most Android TV and Google TV sets. Safe for any brand.",
+ "sources_note": "despy = github.com/aviv0404/tcl-tv-despy; other names refer to public community write-ups of the same packages.",
+ "never_break": "Enforced in code (harden.py) and listed in docs/NEVER-BREAK.md; a profile cannot override it.",
+ "items": [
+  {
+   "id": "google-android-feedback",
+   "title": "Switch off com.google.android.feedback",
+   "why": "Google feedback / bug-report upload",
+   "lose": "Sending feedback to Google",
+   "kind": "package",
+   "target": "com.google.android.feedback",
+   "caution": "",
+   "sources": "despy; 0x4f53"
+  },
+  {
+   "id": "android-tv-feedbackconsent",
+   "title": "Switch off com.android.tv.feedbackconsent",
+   "why": "Feedback consent dialog for Google bug reports",
+   "lose": "Nothing visible",
+   "kind": "package",
+   "target": "com.android.tv.feedbackconsent",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "autoinstalls-google-gtvpai",
+   "title": "Switch off android.autoinstalls.config.google.gtvpai",
+   "why": "Play Auto Installs: pushes partner apps onto the TV",
+   "lose": "Partner app auto-installs",
+   "kind": "package",
+   "target": "android.autoinstalls.config.google.gtvpai",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "google-android-tvrecommendations",
+   "title": "Switch off com.google.android.tvrecommendations",
+   "why": "Legacy Android TV recommendations provider",
+   "lose": "Nothing on Google TV home",
+   "kind": "package",
+   "target": "com.google.android.tvrecommendations",
+   "caution": "",
+   "sources": "0x4f53"
+  }
+ ]
+}

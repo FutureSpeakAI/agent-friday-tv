@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fridaytv-setup"
+version = "0.1.0"
+description = "Find your Android TV on the network and set up Agent Friday on it: pair, install, keys, optional hardening, verify, undo."
+readme = "../README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "FutureSpeak.AI" }]
+dependencies = []   # standard library only, on purpose
+
+[project.scripts]
+fridaytv-setup = "fridaytv_setup.cli:main"
+fridaytv-mcp = "fridaytv_setup.mcp:main"
+
+[tool.setuptools]
+packages = ["fridaytv_setup", "fridaytv_setup.profiles"]
+
+[tool.setuptools.package-data]
+"fridaytv_setup.profiles" = ["*.json"]

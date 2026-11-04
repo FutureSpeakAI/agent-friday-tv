@@ -1,0 +1,281 @@
+{
+ "name": "TCL Google TV (optional vendor profile)",
+ "manufacturers": [
+  "tcl"
+ ],
+ "description": "TCL's own telemetry, ad and bloat components. Only offered when the TV reports TCL as its maker.",
+ "sources_note": "despy = github.com/aviv0404/tcl-tv-despy; other names refer to public community write-ups of the same packages.",
+ "never_break": "Enforced in code (harden.py) and listed in docs/NEVER-BREAK.md; a profile cannot override it.",
+ "items": [
+  {
+   "id": "tcl-ttvs",
+   "title": "Switch off com.tcl.ttvs",
+   "why": "TCL services hub: BI/usage reporting, remote keypress logging, device-ID tracking, push channel, silent app installs",
+   "lose": "TCL T-Cast, TCL message box, TCL app auto-updates; possibly TCL update prompts (verify System update still works after Apply)",
+   "kind": "package",
+   "target": "com.tcl.ttvs",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-bi",
+   "title": "Switch off com.tcl.bi",
+   "why": "TCL business-intelligence (usage analytics) reporter on older TCL builds",
+   "lose": "Nothing visible",
+   "kind": "package",
+   "target": "com.tcl.bi",
+   "caution": "",
+   "sources": "0x4f53"
+  },
+  {
+   "id": "tcl-partnercustomizer",
+   "title": "Switch off com.tcl.partnercustomizer",
+   "why": "Injects TCL partner/sponsored rows into the Google TV home screen",
+   "lose": "Partner rows",
+   "kind": "package",
+   "target": "com.tcl.partnercustomizer",
+   "caution": "",
+   "sources": "despy; llaumgui; 0x4f53"
+  },
+  {
+   "id": "tcl-channelplus",
+   "title": "Switch off com.tcl.channelplus",
+   "why": "TCL Channel (free ad-supported channels, auto-launch prompts)",
+   "lose": "TCL Channel app",
+   "kind": "package",
+   "target": "com.tcl.channelplus",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-bootadservice",
+   "title": "Switch off com.tcl.bootadservice",
+   "why": "Ads shown inside TCL apps / at boot",
+   "lose": "Nothing useful",
+   "kind": "package",
+   "target": "com.tcl.bootadservice",
+   "caution": "",
+   "sources": "0x4f53"
+  },
+  {
+   "id": "tcl-overseasappshow",
+   "title": "Switch off com.tcl.overseasappshow",
+   "why": "TCL promoted-app showcase",
+   "lose": "Promoted apps",
+   "kind": "package",
+   "target": "com.tcl.overseasappshow",
+   "caution": "",
+   "sources": "0x4f53"
+  },
+  {
+   "id": "tcl-appmarket2",
+   "title": "Switch off com.tcl.appmarket2",
+   "why": "TCL app store (silent/partner installs)",
+   "lose": "TCL app store (Google Play unaffected)",
+   "kind": "package",
+   "target": "com.tcl.appmarket2",
+   "caution": "",
+   "sources": "0x4f53"
+  },
+  {
+   "id": "tcl-messagebox",
+   "title": "Switch off com.tcl.messagebox",
+   "why": "TCL notifications and promos",
+   "lose": "Promo notifications",
+   "kind": "package",
+   "target": "com.tcl.messagebox",
+   "caution": "",
+   "sources": "despy; 0x4f53"
+  },
+  {
+   "id": "tcl-esticker",
+   "title": "Switch off com.tcl.esticker",
+   "why": "Store-mode stickers and pop-ups",
+   "lose": "Nothing for home use",
+   "kind": "package",
+   "target": "com.tcl.esticker",
+   "caution": "",
+   "sources": "despy; 0x4f53"
+  },
+  {
+   "id": "tcl-exhibit",
+   "title": "Switch off com.tcl.exhibit",
+   "why": "Store demo mode",
+   "lose": "Nothing for home use",
+   "kind": "package",
+   "target": "com.tcl.exhibit",
+   "caution": "",
+   "sources": "despy; llaumgui"
+  },
+  {
+   "id": "tcl-magiconnectfree",
+   "title": "Switch off com.tcl.magiconnectfree",
+   "why": "TCL phone-to-TV connector (contains Firebase, AdMob)",
+   "lose": "TCL phone app link (Google Cast unaffected)",
+   "kind": "package",
+   "target": "com.tcl.magiconnectfree",
+   "caution": "",
+   "sources": "despy; llaumgui"
+  },
+  {
+   "id": "tcl-dashboard",
+   "title": "Switch off com.tcl.dashboard",
+   "why": "TCL smart-home dashboard, IoT registration",
+   "lose": "TCL smart-home dashboard",
+   "kind": "package",
+   "target": "com.tcl.dashboard",
+   "caution": "",
+   "sources": "despy; llaumgui"
+  },
+  {
+   "id": "tcl-tv-tclhome-passive",
+   "title": "Switch off com.tcl.tv.tclhome_passive",
+   "why": "TCL home IoT registration service",
+   "lose": "TCL smart-home dashboard",
+   "kind": "package",
+   "target": "com.tcl.tv.tclhome_passive",
+   "caution": "",
+   "sources": "despy; llaumgui"
+  },
+  {
+   "id": "tcl-logkit",
+   "title": "Switch off com.tcl.logkit",
+   "why": "Log upload for TCL remote diagnosis",
+   "lose": "TCL remote support",
+   "kind": "package",
+   "target": "com.tcl.logkit",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-repairguide",
+   "title": "Switch off com.tcl.repairguide",
+   "why": "Remote diagnosis with screen capture (Bugly)",
+   "lose": "TCL remote support",
+   "kind": "package",
+   "target": "com.tcl.repairguide",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-interactive",
+   "title": "Switch off com.tcl.interactive",
+   "why": "HbbTV interactive engine (contains microphone-capture code; HbbTV is a European standard)",
+   "lose": "Nothing in the US",
+   "kind": "package",
+   "target": "com.tcl.interactive",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-smartalexa",
+   "title": "Switch off com.tcl.smartalexa",
+   "why": "TCL built-in Alexa",
+   "lose": "TCL's Alexa (Google Assistant unaffected)",
+   "kind": "package",
+   "target": "com.tcl.smartalexa",
+   "caution": "",
+   "sources": "despy; llaumgui; 0x4f53"
+  },
+  {
+   "id": "tcl-eva",
+   "title": "Switch off com.tcl.eva",
+   "why": "TCL voice/gesture wake-up",
+   "lose": "TCL far-field voice wake",
+   "kind": "package",
+   "target": "com.tcl.eva",
+   "caution": "",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-usercenter",
+   "title": "Switch off com.tcl.usercenter",
+   "why": "TCL account",
+   "lose": "TCL account entry in Settings",
+   "kind": "package",
+   "target": "com.tcl.usercenter",
+   "caution": "",
+   "sources": "despy; llaumgui"
+  },
+  {
+   "id": "tcl-guard",
+   "title": "Switch off com.tcl.guard",
+   "why": "\"Safety Guard\" cleaner",
+   "lose": "Nothing useful",
+   "kind": "package",
+   "target": "com.tcl.guard",
+   "caution": "",
+   "sources": "despy; llaumgui; 0x4f53"
+  },
+  {
+   "id": "autoinstalls-tcl-device",
+   "title": "Switch off android.autoinstalls.config.tcl.device",
+   "why": "TCL Play Auto Installs config",
+   "lose": "Partner app auto-installs",
+   "kind": "package",
+   "target": "android.autoinstalls.config.tcl.device",
+   "caution": "",
+   "sources": "0x4f53"
+  },
+  {
+   "id": "tcl-waterfall-overseas",
+   "title": "Switch off com.tcl.waterfall.overseas",
+   "why": "TCL content/ads feed with watch history",
+   "lose": "TCL content feed. CAUTION: one report of a Google TV boot hang (0x4f53 gist, Aug 2024); others report it safe. Opt-in only.",
+   "kind": "package",
+   "target": "com.tcl.waterfall.overseas",
+   "caution": "Optional, more aggressive: one report of a boot hang; read 'what you lose' first.",
+   "sources": "despy; llaumgui; 0x4f53"
+  },
+  {
+   "id": "tcl-useragreement",
+   "title": "Switch off com.tcl.useragreement",
+   "why": "TCL consent sync",
+   "lose": "Some TCL apps may re-prompt",
+   "kind": "package",
+   "target": "com.tcl.useragreement",
+   "caution": "Optional, more aggressive: read 'what you lose' first.",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-miracast",
+   "title": "Switch off com.tcl.miracast",
+   "why": "Miracast screen mirroring",
+   "lose": "Miracast (Google Cast unaffected)",
+   "kind": "package",
+   "target": "com.tcl.miracast",
+   "caution": "Optional, more aggressive: read 'what you lose' first.",
+   "sources": "despy; 0x4f53"
+  },
+  {
+   "id": "tcl-airplay2",
+   "title": "Switch off com.tcl.airplay2",
+   "why": "AirPlay receiver",
+   "lose": "AirPlay from Apple devices",
+   "kind": "package",
+   "target": "com.tcl.airplay2",
+   "caution": "Optional, more aggressive: read 'what you lose' first.",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-bi-consent-declined",
+   "title": "Record 'declined' for TCL's analytics consent",
+   "why": "TCL's analytics SDK treats an unset value as consent; 0 means declined (documented by the tcl-tv-despy project).",
+   "lose": "Nothing visible.",
+   "kind": "setting",
+   "target": "global/gdpr_user_action",
+   "value": "0",
+   "sources": "despy"
+  },
+  {
+   "id": "tcl-app-autoupdate-off",
+   "title": "Stop TCL's silent app auto-updates",
+   "why": "TCL's own store updates its apps silently in the background.",
+   "lose": "TCL apps update only when you choose (Google Play updates are unaffected).",
+   "kind": "setting",
+   "target": "system/tcl_app_autoupdate",
+   "value": "0",
+   "sources": "despy"
+  }
+ ]
+}

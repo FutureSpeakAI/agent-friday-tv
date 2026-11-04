@@ -1,0 +1,32 @@
+plugins { id 'com.android.application' }
+apply from: rootProject.file('signing.gradle')
+
+android {
+    namespace 'org.tvprivacy.adbreak'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'org.tvprivacy.adbreak'
+        minSdk 28
+        targetSdk 34
+        versionCode 13
+        versionName '0.9.1'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig fridayReleaseSigning(android)   // see ../signing.gradle; never commit a keystore
+        }
+    }
+    lint { abortOnError false; checkReleaseBuilds false }
+    testOptions { unitTests.returnDefaultValues = true }
+}
+// No runtime dependencies on purpose: nothing that could pull in network code.
+// JUnit is test-only and never ships in the APK (GuardTest checks this file).
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}

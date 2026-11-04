@@ -1,0 +1,9 @@
+{
+  "desktop_commit": "2ac5da69843ac1c3bbafec8ae34f3a660fa93faa",
+  "files": {
+    "static/fonts/g/Orbitron-latin.woff2": "c25a9f9da5d9f3db1bf2a01474722dc9b377675b7bbab6d0dfda6902794fd1ed",
+    "static/fonts/g/Inter-latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "static/fonts/g/JetBrainsMono-latin.woff2": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be",
+    "static/android-chrome-512x512.png": "7e5204b0bb58be3240901ce281c301d686fc70339c11076705eba0e896e578d3"
+  }
+}

@@ -1,0 +1,36 @@
+# Build output
+build/
+.gradle/
+*.apk
+*.aab
+*.idsig
+
+# Local machine settings
+local.properties
+.idea/
+*.iml
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Secrets and signing: never commit these
+*.jks
+*.keystore
+*.p12
+!android/tv/src/test/resources/pair/*.p12
+keystore.properties
+*.key
+*.dpapi
+keys.json
+import.json
+.env
+.env.*
+
+# Personal data: logs, screenshots and journals stay on your own computer
+logs/
+*.log
+screenshots/
+hardening-*.json
+private-patterns.txt
+

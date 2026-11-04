@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "_comment": "Every foreground app is watched with 'global' unless excluded. Strong markers trigger while audio is playing; weak markers also need a full-screen video surface. Per-app entries add markers and options. Patterns are first drafts, tuned against real ad breaks (see README). Override without rebuilding: adb push rules.json /sdcard/Android/data/org.tvprivacy.adbreak/files/rules.json, then Settings > Reload rules.",
+  "watchAllApps": true,
+  "exitScans": 2,
+  "exitMs": 1500,
+  "maxAdSeconds": 360,
+  "maxNodes": 3000,
+  "fullscreenFraction": 0.8,
+  "surfaceClass": "(?i)(SurfaceView|TextureView|VideoView|PlayerView|VideoSurface|exo_content|AspectRatioFrameLayout)",
+  "countdown": "(\\d{1,2}):(\\d{2})",
+  "countdownViewId": "(?i)ad[_-]?(count|time|remain|progress)",
+
+  "exclude": [
+    "org.tvprivacy.adbreak", "com.spocky.projengmenu", "com.google.android.apps.tv.launcherx",
+    "com.google.android.tvlauncher", "com.android.tv.settings", "com.android.systemui",
+    "com.android.vending", "com.google.android.katniss", "com.google.android.inputmethod.latin",
+    "com.google.android.leanbackime", "com.google.android.gms", "com.google.android.permissioncontroller",
+    "com.google.android.tungsten.setupwraith", "com.google.android.tv.remote.service",
+    "com.google.android.apps.tv.dreamx", "com.android.vending"
+  ],
+  "excludePrefix": ["com.tcl.", "com.mediatek.", "com.android.", "android.", "tv.projectivy."],
+
+  "global": [
+    { "id": "ad-n-of-m",      "text": "(?i)^\\s*ads?\\s*\\d+\\s*(of|/)\\s*\\d+" },
+    { "id": "ad-time",        "text": "(?i)^\\s*ads?\\s*[\\u00b7\\u2022|:\\-]?\\s*\\d{1,2}:\\d{2}\\s*$" },
+    { "id": "ad-dot",         "text": "(?i)^\\s*ads?\\s*[\\u00b7\\u2022]\\s*\\S" },
+    { "id": "skip-ad",        "text": "(?i)^\\s*skip\\s*(this\\s*)?ads?\\b" },
+    { "id": "play-after",     "text": "(?i)video will (play|resume|start|begin) (after|in)" },
+    { "id": "after-ad",       "text": "(?i)(play|resume|start|continue)s? after (the |this )?ads?\\b" },
+    { "id": "resume-in",      "text": "(?i)(show|movie|episode|program|programme|content) will (resume|start|play|begin|continue) (in|after|shortly)" },
+    { "id": "commercial",     "text": "(?i)^\\s*(commercial|ad) break\\b" },
+    { "id": "ad-remaining",   "text": "(?i)^\\s*ads?\\s*(remaining|ending in|ends in)\\b" },
+    { "id": "right-back",     "text": "(?i)^\\s*we'?ll be right back" },
+    { "id": "visit-advertiser","text": "(?i)^\\s*visit advertiser\\b" },
+    { "id": "ad-badge",       "text": "^\\s*(Ad|AD|Ads|ADS|Advertisement|ADVERTISEMENT|Commercial)\\s*$", "strength": "weak" },
+    { "id": "sponsored",      "text": "(?i)^\\s*sponsored\\b", "strength": "weak" },
+    { "id": "ads-by",         "text": "(?i)^\\s*ads by\\b", "strength": "weak" },
+    { "id": "skip-bare",      "text": "^\\s*Skip\\s*$", "strength": "weak" },
+    { "id": "ad-viewid",      "viewId": "(?i)(^|[/_.:])(ad_?(badge|countdown|count_down|label|indicator|overlay|marker|timer|progress|ui|pod|break)|ads_?ui|adui|ima_?ad)", "strength": "weak" }
+  ],
+
+  "apps": {
+    "com.google.android.youtube.tv":     { "name": "YouTube (stock)" },
+    "org.smarttube.stable":              { "name": "SmartTube" },
+    "com.amazon.amazonvideo.livingroom": { "name": "Prime Video",
+      "markers": [ { "id": "prime-ads-left", "text": "(?i)^\\s*ads?\\s*\\(?\\d+\\)?\\s*(left|remaining)" } ] },
+    "com.netflix.ninja":                 { "name": "Netflix" },
+    "com.disney.disneyplus":             { "name": "Disney+" },
+    "com.wbd.stream":                    { "name": "Max" },
+    "com.peacocktv.peacockandroid":      { "name": "Peacock" },
+    "com.cbs.ott":                       { "name": "Paramount+" },
+    "com.apple.atve.androidtv.appletv":  { "name": "Apple TV" },
+    "com.hulu.livingroomplus":           { "name": "Hulu" },
+    "com.tubitv":                        { "name": "Tubi" },
+    "tv.pluto.android":                  { "name": "Pluto TV" },
+    "com.roku.web.trc":                  { "name": "The Roku Channel" }
+  }
+}

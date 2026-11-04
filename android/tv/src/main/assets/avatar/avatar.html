@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Friday's own avatar, as Friday desktop draws it. Everything under desktop/ is copied
+     byte for byte from Agent Friday desktop (github.com/FutureSpeakAI/Agent-Friday; see SOURCE.json); tv_shim.js runs
+     before it (TV preset, local genome, reduce-motion) and tv_bridge.js after it (the
+     calls the Android app makes). No network: the app blocks every request that is not
+     a local asset. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'">
+<title>Agent Friday™</title>
+<style>
+  @font-face { font-family: 'Orbitron'; src: url('desktop/Orbitron-latin.woff2') format('woff2'); font-weight: 400 900; }
+  html, body { margin: 0; height: 100%; background: #000103; overflow: hidden; }
+  canvas { display: block; position: fixed; left: 0; top: 0; outline: none; opacity: 0; transition: opacity 0.7s ease-out; }
+  html, body, canvas, *:focus { outline: none !important; -webkit-tap-highlight-color: transparent; }
+  #ui-root, #hud-overlay, #hand-cursor, #camera-indicator { display: none; }
+</style>
+</head>
+<body>
+<!-- Elements the desktop scene looks up by id; kept so its code runs unchanged. -->
+<div id="hud-overlay"><span id="mood-text"></span></div>
+<div id="camera-indicator"></div>
+<div id="hand-cursor" class="hidden"><svg id="pinch-progress"></svg></div>
+<div id="ui-root"><div id="ui-inner"></div></div>
+<script src="tv_shim.js"></script>
+<script src="desktop/three-r128.min.js"></script>
+<script src="desktop/three-r128-EffectComposer.js"></script>
+<script src="desktop/three-r128-RenderPass.js"></script>
+<script src="desktop/three-r128-ShaderPass.js"></script>
+<script src="desktop/three-r128-CopyShader.js"></script>
+<script src="desktop/three-r128-LuminosityHighPassShader.js"></script>
+<script src="desktop/three-r128-UnrealBloomPass.js"></script>
+<script src="desktop/scene.js"></script>
+<script src="desktop/vibe_api.js"></script>
+<script src="tv_bridge.js"></script>
+</body>
+</html>

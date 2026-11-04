@@ -1,0 +1,22 @@
+plugins { id 'com.android.library' }
+
+// The Friday TV add-on SDK: the shared Look (Brand, Motion, focus and line icons), the one input
+// layer for the remote, the safe network fetch, and the client for the add-on contract
+// (ai.futurespeak.friday.tv.addon.Contract). Add-ons and the core app both build on it.
+// No runtime dependencies on purpose.
+android {
+    namespace 'ai.futurespeak.friday.tv.sdk'
+    compileSdk 36
+    defaultConfig { minSdk 28 }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    testOptions { unitTests.returnDefaultValues = true }
+    lint { abortOnError false }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}

@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "friday-tv": {
+      "command": "python",
+      "args": ["-m", "fridaytv_setup.mcp"],
+      "cwd": "C:/path/to/agent-friday-tv/wizard",
+      "enabled": true,
+      "isolation": "off",
+      "isolation_note": "Needs the local network to find the TV (multicast DNS) and runs Google's adb to install on it."
+    }
+  }
+}

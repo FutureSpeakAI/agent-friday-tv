@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Claude, ElevenLabs, and the hosts a grown-up grants to a channel. No analytics, no SDKs. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Asked at the first talk. The mic is open only while the talk button is held or a
+         spoken question is being taken; an on-screen indicator shows whenever it is. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- One grown-up PIN for the TV: Ad Break Guard's shared PIN service (same signing key only). -->
+    <uses-permission android:name="org.tvprivacy.adbreak.permission.GROWN_UP" />
+
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
+    <!-- Package visibility: the speech recognizer service, the TV's text-to-speech engine, the helper, and launchable apps. -->
+    <queries>
+        <intent><action android:name="android.speech.RecognitionService" /></intent>
+        <intent><action android:name="android.intent.action.TTS_SERVICE" /></intent>
+        <package android:name="org.tvprivacy.adbreak" />
+        <!-- Slice S1: the apps on this TV that Friday may offer to open (launchable ones only;
+             never a see-every-package permission). -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!-- Add-ons (docs/ADDON-CONTRACT.md): Friday lists apps that declare the add-on action. -->
+    <queries>
+        <intent>
+            <action android:name="ai.futurespeak.friday.tv.addon.OPEN" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".FridayApp"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/banner"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/no_backup"
+        android:usesCleartextTraffic="false"
+        android:supportsRtl="true"
+        android:theme="@style/FridayTheme">
+
+        <!-- WebView: no usage metrics to Google, no Safe Browsing lookups (every page here is
+             local, and sandboxed pages only reach hosts a grown-up granted). -->
+        <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
+        <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density"
+            android:hardwareAccelerated="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- A remote button (Ad Break Guard's keymap) can open Agent Friday already listening. -->
+            <intent-filter>
+                <action android:name="ai.futurespeak.friday.tv.action.LISTEN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Same, for launchers that can only name a component: ai.futurespeak.friday.tv/.Listen -->
+        <activity-alias
+            android:name=".Listen"
+            android:targetActivity=".MainActivity"
+            android:exported="true" />
+
+        <!-- Friday Home (home/): the home screen, reached by the Home key through Ad Break
+             Guard's keymap. Deliberately no HOME category: Google's launcher stays the system home
+             (never disabled) and no "choose a home app" dialog can appear. -->
+        <activity
+            android:name=".home.HomeActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density"
+            android:hardwareAccelerated="true" />
+        <!-- A short, stable name for keymaps: ai.futurespeak.friday.tv/.Home -->
+        <activity-alias
+            android:name=".Home"
+            android:targetActivity=".home.HomeActivity"
+            android:exported="true" />
+
+        <!-- The TV's screensaver settings open Friday's Screensaver page through this name. -->
+        <activity-alias
+            android:name=".ScreensaverSettings"
+            android:targetActivity=".MainActivity"
+            android:exported="true" />
+
+        <!-- Friday as the TV's screensaver (ambient mode). Light: no 3D; see ambient/AmbientView. -->
+        <service
+            android:name=".ambient.FridayDream"
+            android:exported="true"
+            android:label="Agent Friday"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.service.dream" android:resource="@xml/friday_dream" />
+        </service>
+
+        <!-- Keys arrive from the PC over adb ("content write"), straight into this process,
+             and are sealed with the Android Keystore at once. Only the adb shell user may
+             call it (checked in code); it never returns a key. -->
+        <provider
+            android:name=".secure.KeyImportProvider"
+            android:authorities="ai.futurespeak.friday.tv.keys"
+            android:exported="true"
+            android:grantUriPermissions="false" />
+        <!-- The add-on contract: answers only enabled add-ons (checked per call, with a pinned signing certificate). -->
+        <provider
+            android:name=".addon.CoreAddonProvider"
+            android:authorities="ai.futurespeak.friday.tv.addon"
+            android:exported="true" />
+        <activity
+            android:name=".addon.ApproveActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="ai.futurespeak.friday.tv.addon.APPROVE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
