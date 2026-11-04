@@ -31,5 +31,5 @@ android {
 dependencies {
     implementation project(':addon-sdk')   // our own code: the shared Look, input layer and add-on contract
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.json:json:20240303'
+    testImplementation 'org.json:json:20260814'
 }
